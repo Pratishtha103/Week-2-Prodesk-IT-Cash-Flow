@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow</title>
+</head>
+<body>
+    <h1>Cash Flow</h1>
+    <form>
+        <label for="total-salary">Total Salary :</label>
+        <input type="number" id="total-salary" name="total-salary"/>
+        <!-- <br/>
+        <button type="submit" onclick="displaySalary(event);">Enter</button>
+    </form>
+    <form> -->
+        <br/>
+        <br/>
+        <label for="expense-name">Expense Name :</label>
+        <input type="text"  id="expense-name" name="expense-name"/>
+        <br/>
+        <br/>
+        <label for="expense-amount">Expense Amount :</label>
+        <input type="number" id="expense-amount" name="expense-amount"/>
+        <br/>
+        <br/>
+        <button type="submit" onclick="displaySalary(event);">Add</button>
+    </form>
+
+    <h3>Total Salary :</h3>
+    <p id="salary"></p>
+    <h3>Expenses :</h3>
+    <ul id="expense-list">
+    </ul>
+    <h3>Remaining Balance :</h3>
+    <p id="balance"></p>
+    <script>
+        function displaySalary(event){
+            event.preventDefault();
+            // let totalSalary = Number(document.getElementById('total-salary').value);
+            let savedSalary = 0;
+            let expenseName = document.getElementById('expense-name').value;
+            let expenseAmount = Number(document.getElementById('expense-amount').value);
+            if (savedSalary === 0) {
+                savedSalary = Number(document.getElementById('total-salary').value);
+            }
+            if (expenseAmount<=0){
+                alert('Only positive expenses greater than 0 is accepted. Re-enter Expense Amount.')
+            }
+            else{
+                totalExpense=0
+                let li = document.createElement('li');
+                li.innerText=`${expenseName} : ${expenseAmount}`;
+                document.getElementById('expense-list').appendChild(li);
+                totalExpense+=expenseAmount;
+            }
+            document.getElementById('salary').innerText=savedSalary;
+            document.getElementById('balance').innerText=savedSalary-totalExpense;
+        }
+    </script>
+</body>
+</html>
